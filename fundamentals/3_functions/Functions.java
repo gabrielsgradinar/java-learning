@@ -30,5 +30,3 @@ public class Functions {
         }
     }
 }
-
-// Spanish "area es igual a largo * ancho"
