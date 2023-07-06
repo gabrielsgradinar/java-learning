@@ -1,16 +1,19 @@
 import java.security.PublicKey;
+import java.util.Arrays;
 
 public class Car {
     private String make;
     private double price;
     private int year;
     private String color;
+    private String[] parts;
 
-    public Car(String make, double price, int year, String color) {
+    public Car(String make, double price, int year, String color, String[] parts) {
         this.make = make;
         this.price = price;
         this.year = year;
         this.color = color;
+        this.parts = Arrays.copyOf(parts, parts.length);
     }
 
     public Car(Car source) {
@@ -18,7 +21,15 @@ public class Car {
         this.price = source.price;
         this.year = source.year;
         this.color = source.color;
+        this.parts = Arrays.copyOf(source.parts, source.parts.length);
+    }
 
+    public String[] getParts() {
+        return Arrays.copyOf(this.parts, this.parts.length);
+    }
+
+    public void setParts(String[] parts) {
+        this.parts = Arrays.copyOf(parts, parts.length);
     }
 
     public String getMake() {
@@ -56,6 +67,17 @@ public class Car {
     public void drive() {
         System.out.println("\nYou bought the beautiful " + year + " " + color + " " + make + " for " + price + ".");
         System.out.println("Please drive your car to the nearest exit.\n");
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " make='" + getMake() + "'" +
+                ", price='" + getPrice() + "'" +
+                ", year='" + getYear() + "'" +
+                ", color='" + getColor() + "'" +
+                ", parts='" + Arrays.toString(getParts()) + "'" +
+                "}";
     }
 
 }
